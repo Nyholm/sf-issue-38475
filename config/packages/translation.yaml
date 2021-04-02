@@ -1,6 +1,15 @@
+parameters:
+    locales: ['en', 'sv']
+
 framework:
-    default_locale: en
+    default_locale: sv
     translator:
         default_path: '%kernel.project_dir%/translations'
+        enabled_locales: '%locales%'
         fallbacks:
             - en
+        providers:
+            loco:
+                dsn: '%env(LOCO_DSN)%'
+                domains: ['messages']
+                locales: '%locales%'
